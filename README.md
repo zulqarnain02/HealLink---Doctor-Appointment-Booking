@@ -1,8 +1,7 @@
 # Doctor Appointment Booking System 🏥
 
- ![EditProfile](https://github.com/user-attachments/assets/01b2fc9a-01d3-4cf9-8b37-aae16afb8aed)
+ ![homepage](https://github.com/user-attachments/assets/5243820a-0603-44fc-accf-23f826e6fdb9)
 
-  
 
 Welcome to the Doctor Appointment Booking System! This web application allows users to book appointments with doctors seamlessly. It is designed to simplify the process of scheduling consultations and managing patient-doctor interactions. 🌐
 
@@ -10,7 +9,8 @@ Welcome to the Doctor Appointment Booking System! This web application allows us
 - **User Authentication**: Secure login and registration for patients and doctors. 🔑
   
   ![login](https://github.com/user-attachments/assets/9ce46f0a-36ce-4cce-9088-ea11f775ac36)
-  
+  ![register](https://github.com/user-attachments/assets/635556e2-de44-469f-87ee-0f5497e7a862)
+
 - **Doctor Profiles**: View detailed profiles, including specialization, consultation fees, and availability. 👩‍⚕️👨‍⚕️
     
   ![doctorProfile](https://github.com/user-attachments/assets/bcf63c2a-0616-4ea2-bfc1-962c935de946)
@@ -100,6 +100,6 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## Contact 📧
 For queries or feedback, reach out to us at:
 - **Email**: zulqarnain4292@gmail.com 📩
-- **Website**: [HealLink](http://www.heallink.com) 🌐
+- **Website**: [HealLink](https://zulqarnainportfolio.vercel.app/) 🌐
 
 Thank you for using the Doctor Appointment Booking System! 😊
