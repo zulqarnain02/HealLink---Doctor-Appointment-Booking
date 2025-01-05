@@ -30,6 +30,7 @@ Welcome to the Doctor Appointment Booking System! This web application allows us
 - **Appointment Approvals**: Doctors can approve or reject appointment requests. ✅❌
   
   ![doctorsApproval](https://github.com/user-attachments/assets/7281c596-bdb5-46e8-acb5-0a1130dcd8f7)
+  ![patientPay](https://github.com/user-attachments/assets/fd75263c-faf1-4053-bf64-a1a010f87f69)
 
   
 - **Profile Management**: Doctors can edit their profiles as needed. 📝
