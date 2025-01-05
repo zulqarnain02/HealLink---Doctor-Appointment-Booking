@@ -1,4 +1,4 @@
-# Doctor Appointment Booking System 🏥
+# HealLink - Doctor Appointment Booking🏥
 
  ![homepage](https://github.com/user-attachments/assets/5243820a-0603-44fc-accf-23f826e6fdb9)
 
