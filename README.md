@@ -1,15 +1,31 @@
 # Doctor Appointment Booking System 🏥
+  ![Uploading homepage.png…]()
 
 Welcome to the Doctor Appointment Booking System! This web application allows users to book appointments with doctors seamlessly. It is designed to simplify the process of scheduling consultations and managing patient-doctor interactions. 🌐
 
 ## Features ✨
-- **User Authentication**: Secure login and registration for patients and doctors. 🔑
-- **Doctor Profiles**: View detailed profiles, including specialization, consultation fees, and availability. 👩‍⚕️👨‍⚕️
+- **User Authentication**: Secure login and registration for patients and doctors. 🔑  
+  ![login](https://github.com/user-attachments/assets/9ce46f0a-36ce-4cce-9088-ea11f775ac36)
+  
+- **Doctor Profiles**: View detailed profiles, including specialization, consultation fees, and availability. 👩‍⚕️👨‍⚕️  
+  ![doctorProfile](https://github.com/user-attachments/assets/bcf63c2a-0616-4ea2-bfc1-962c935de946)
+
 - **Appointment Booking**: Schedule appointments with doctors in just a few clicks. 📅
-- **Transaction History**: View payment and discount details for past appointments. 💳
-- **Manage Time Slots**: Doctors can manage their availability and update time slots. ⏰
-- **Appointment Approvals**: Doctors can approve or reject appointment requests. ✅❌
-- **Profile Management**: Doctors can edit their profiles as needed. 📝
+  ![bookAppointment](https://github.com/user-attachments/assets/1c71695a-5ca8-489b-8271-7ac89c2afd5d)
+
+- **Transaction History**: View payment and discount details for past appointments. 💳  
+  ![transaction History](https://github.com/user-attachments/assets/b383e890-c007-480d-8002-fc61aa524a44)
+
+- **Manage Time Slots**: Doctors can manage their availability and update time slots. ⏰  
+  ![SlotsManagementsForDoctor](https://github.com/user-attachments/assets/76849185-429b-4792-8ddb-4e250f3eba39)
+
+- **Appointment Approvals**: Doctors can approve or reject appointment requests. ✅❌  
+  ![doctorsApproval](https://github.com/user-attachments/assets/7281c596-bdb5-46e8-acb5-0a1130dcd8f7)
+
+  
+- **Profile Management**: Doctors can edit their profiles as needed. 📝  
+  ![Uploading EditProfile.png…]()
+
 
 ## Tech Stack 💻
 - **Frontend**: React.js with Tailwind CSS for styling. 🎨
