@@ -33,23 +33,21 @@ export default function NavBar() {
     <Disclosure as="nav" className="bg-gray-800 fixed top-0 z-50 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
             {/* Mobile menu button */}
             <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+              <Bars3Icon className="block h-7 w-7" aria-hidden="true" />
             </Disclosure.Button>
           </div>
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex-shrink-0 pr-8">
-              <img onClick={navigateToHome} 
-                className="h-8 w-auto rounded-full"
-                src="https://via.placeholder.com/120x30.png/ADD8E6/000000?text=HealLink" // Replace this URL with your logo
-                alt="Your Company"
-              />
+          <div className="flex flex-1 items-center justify-between sm:items-stretch sm:justify-between">
+
+            <div className="flex-shrink-0">
+              <img src="../public/assets/logo.jpeg" onClick={navigateToHome} width={50} height={50}/>
             </div>
-            <div className="hidden sm:ml-6 sm:block">
-              <div className="flex space-x-4">
+
+            <div className="hidden sm:flex sm:items-center sm:justify-center flex-1">
+              <div className="flex space-x-4 items-center justify-center">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
@@ -67,7 +65,7 @@ export default function NavBar() {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 cursor-pointer">
+          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 cursor-pointer hidden sm:block">
             {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">
               <div>
@@ -142,6 +140,32 @@ export default function NavBar() {
               {item.name}
             </Disclosure.Button>
           ))}
+          
+          {/* Mobile Profile Options */}
+          <div className="pt-4 pb-3 border-t border-gray-700">
+            <div className="space-y-1">
+              <Disclosure.Button
+                as="a"
+                onClick={handleProfileClick}
+                className="block px-4 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+              >
+                Your Profile
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                className="block px-4 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+              >
+                Settings
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                onClick={handleLogout}
+                className="block px-4 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+              >
+                Sign out
+              </Disclosure.Button>
+            </div>
+          </div>
         </div>
       </Disclosure.Panel>
     </Disclosure>

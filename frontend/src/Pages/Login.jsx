@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import axios from "../api/axios";
-import Background from "../components/Background"; // Import the Background component
-// import NavBar from "../components/NavBar";
 
-import Footer from "../components/Footer";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -33,8 +30,6 @@ const Login = () => {
 
   return (
     <div className="h-screen w-full bg-gradient-to-b from-blue-100 to-gray-100 relative flex justify-center items-center overflow-hidden">
-      {/* Background Elements */}
-      <Background />
 
       {/* Login Box */}
       <div className="bg-white p-8 rounded-lg shadow-lg w-96 relative z-10 text-left">

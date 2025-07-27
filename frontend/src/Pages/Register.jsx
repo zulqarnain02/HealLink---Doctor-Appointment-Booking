@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Background from "../components/Background";
-// import Footer from "../components/Footer";
+
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -85,8 +84,7 @@ const Register = () => {
 
   return (
     <div className="h-screen w-full bg-gradient-to-b from-blue-100 to-gray-100 relative flex justify-center items-center overflow-hidden">
-      {/* Background */}
-      <Background />
+
 
       {/* Register Box */}
       <div className="bg-white p-12 rounded-lg shadow-lg w-full z-10 text-left max-w-screen-sm min-h-[400px] max-h-[80vh] overflow-y-auto">

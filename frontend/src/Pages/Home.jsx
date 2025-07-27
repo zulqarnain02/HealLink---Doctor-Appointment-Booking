@@ -18,7 +18,7 @@ const Home = () => {
             className="absolute top-0 left-0 h-full w-full bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: 'url("https://picsum.photos/2000/1000")', opacity: 0.5 }}
           />
-          <button className="absolute bottom-8 left-12 bg-transparent border-2 border-indigo-600 text-indigo-600 py-3 px-10 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-1xl" onClick={handleBookAppointment}>
+          <button className="absolute bottom-8 left-1/2 transform -translate-x-1/2 sm:left-12 sm:transform-none bg-transparent border-2 border-indigo-600 text-indigo-600 py-3 px-10 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-1xl" onClick={handleBookAppointment}>
             {/*here i need to handle navigation */}
             <b>Book Appointment</b>
           </button>
