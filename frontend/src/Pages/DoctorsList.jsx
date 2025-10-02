@@ -15,22 +15,24 @@ const Modal = ({ isOpen, onClose, children }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-50 p-12"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-slate-900/60 backdrop-blur"
       onClick={handleOverlayClick}
     >
-      <div className="bg-white p-6 rounded-lg shadow-lg max-h-[80vh] overflow-auto">
+      <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl ring-1 ring-black/5 max-h-[80vh] overflow-auto">
         <button
-          className="absolute top-2 right-2 text-gray-600"
+          className="absolute top-3 right-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/80 text-gray-700 ring-1 ring-black/10 hover:bg-white"
           onClick={onClose}
+          aria-label="Close modal"
+          type="button"
         >
-          X
+          ×
         </button>
         {children}
-        {/* Close Button inside modal */}
-        <div className="mt-4 flex justify-end">
+        <div className="mt-6 flex justify-end">
           <button
-            className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700"
+            className="rounded-full bg-indigo-600 px-5 py-2 text-white shadow hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
             onClick={onClose}
+            type="button"
           >
             Close
           </button>
@@ -140,30 +142,54 @@ const DoctorsList = () => {
       .catch((error) => console.error("Error booking appointment:", error));
   };
 
+  // Helper to get initials for avatar placeholder
+  const getInitials = (name = "") => {
+    const parts = name.trim().split(/\s+/);
+    const first = parts[0]?.charAt(0) || "";
+    const last = parts.length > 1 ? parts[parts.length - 1].charAt(0) : "";
+    return (first + last).toUpperCase();
+  };
+
   return (
-    <div className="p-6 flex-grow min-h-screen">
-      <h1 className="text-3xl font-semibold text-center text-gray-800 mb-4">
+    <div className="pt-12 p-6 flex-grow min-h-screen">
+      <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-8">
         Available Doctors
       </h1>
-      <div className="grid grid-cols-1 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
         {doctors.map((doctor) => (
           <div
             key={doctor._id}
-            className="bg-white p-6 shadow-md rounded-lg mb-3"
+            className="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
           >
-            <h2 className="text-xl font-bold">{doctor.specialization}</h2>
-            <p className="text-gray-700">Dr. {doctor.fullName}</p>
-            <p className="text-gray-600 mt-2">{doctor.description}</p>
-            <div className="flex justify-between mt-4">
+            <div className="flex items-center gap-4">
+              <div className="relative h-12 w-12 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 text-white font-semibold ring-2 ring-white shadow">
+                <span>{getInitials(doctor.fullName || "Doctor")}</span>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Specialist in</p>
+                <h2 className="text-lg font-semibold text-gray-900">{doctor.specialization}</h2>
+                <p className="text-gray-800">Dr. {doctor.fullName}</p>
+              </div>
+            </div>
+            <p className="mt-3 line-clamp-3 text-gray-600">{doctor.description}</p>
+            <div className="mt-4 flex items-center justify-between">
+              <span className="text-sm font-medium text-gray-700">Consultation Fee</span>
+              <span className="rounded-full bg-indigo-50 px-3 py-1 text-sm font-semibold text-indigo-700 ring-1 ring-indigo-100">
+                ₹{doctor.consultationFee}
+              </span>
+            </div>
+            <div className="mt-5 flex items-center justify-between gap-3">
               <button
-                className="bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700"
-                onClick={() => handleBookNow(doctor)} // Open book modal
+                className="flex-1 rounded-full bg-indigo-600 px-4 py-2 text-white font-medium shadow hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                onClick={() => handleBookNow(doctor)}
+                type="button"
               >
                 Book Now
               </button>
               <button
-                className="bg-gray-200 text-gray-700 py-2 px-4 rounded hover:bg-gray-300 cursor-pointer"
-                onClick={() => handleKnowDoctor(doctor)} // Open modal with doctor details
+                className="flex-1 rounded-full border border-indigo-200 px-4 py-2 text-indigo-700 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                onClick={() => handleKnowDoctor(doctor)}
+                type="button"
               >
                 Know Your Doctor
               </button>
@@ -175,53 +201,45 @@ const DoctorsList = () => {
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         {selectedDoctor && (
           <div>
-            <h2 className="text-xl font-bold mb-2 items-center">
-              Dr. {selectedDoctor.fullName}
-            </h2>
-            <p>
-              <strong>Specialization:</strong> {selectedDoctor.specialization}
-            </p>
-            <p>
-              <strong>Gender:</strong> {selectedDoctor.gender}
-            </p>
-            <p>
-              <strong>Date of Birth:</strong>{" "}
-              {new Date(selectedDoctor.dateOfBirth).toLocaleDateString()}
-            </p>
-            <p>
-              <strong>Years of Experience:</strong>{" "}
-              {selectedDoctor.yearsOfExperience}
-            </p>
-            <p>
-              <strong>Clinic Name:</strong> {selectedDoctor.clinicName}
-            </p>
-            <p>
-              <strong>Clinic Address:</strong> {selectedDoctor.clinicAddress}
-            </p>
-            <p>
-              <strong>Consultation Fee:</strong> ₹
-              {selectedDoctor.consultationFee}
-            </p>
-            <p>
-              <strong>Description:</strong> {selectedDoctor.description}
-            </p>
+            <div className="flex items-center gap-4">
+              <div className="h-12 w-12 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 text-white font-semibold">
+                {getInitials(selectedDoctor.fullName || "Doctor")}
+              </div>
+              <div>
+                <h2 className="text-xl font-bold">Dr. {selectedDoctor.fullName}</h2>
+                <p className="text-sm text-gray-600">{selectedDoctor.specialization}</p>
+              </div>
+            </div>
 
-            {/* Displaying Doctor's Availability */}
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <InfoRow label="Gender" value={selectedDoctor.gender} />
+              <InfoRow label="DOB" value={new Date(selectedDoctor.dateOfBirth).toLocaleDateString()} />
+              <InfoRow label="Experience" value={`${selectedDoctor.yearsOfExperience} years`} />
+              <InfoRow label="Clinic" value={selectedDoctor.clinicName} />
+              <InfoRow label="Address" value={selectedDoctor.clinicAddress} />
+              <InfoRow label="Fee" value={`₹${selectedDoctor.consultationFee}`} />
+            </div>
+
             <div className="mt-4">
+              <p className="text-gray-700">{selectedDoctor.description}</p>
+            </div>
+
+            {/* Availability */}
+            <div className="mt-6">
               <h3 className="text-lg font-semibold">Availability</h3>
               <div className="mt-2">
                 {selectedDoctor.availability.length === 0 ? (
-                  <p>No availability provided.</p>
+                  <p className="text-gray-600">No availability provided.</p>
                 ) : (
                   selectedDoctor.availability.map((availability, index) => (
                     <div key={index} className="mt-4">
-                      <p className="font-bold">{availability.day}:</p>
+                      <p className="font-semibold text-gray-800">{availability.day}:</p>
                       {availability.slots.length === 0 ? (
-                        <p>No available slots</p>
+                        <p className="text-gray-600">No available slots</p>
                       ) : (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-2 items-center">
+                        <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 gap-2">
                           {availability.slots.map((slot, idx) => (
-                            <div key={idx} className="border p-2 rounded-md">
+                            <div key={idx} className="rounded-md border border-gray-200 px-3 py-2 text-sm text-gray-700">
                               {slot.start} - {slot.end}
                             </div>
                           ))}
@@ -258,7 +276,7 @@ const DoctorsList = () => {
               <input
                 type="date"
                 id="appointmentDate"
-                className="mt-2 border p-2 w-full"
+                className="mt-2 w-full rounded-md border border-gray-300 p-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                 onChange={handleDateChange}
               />
 
@@ -284,7 +302,7 @@ const DoctorsList = () => {
                         ) : (
                           <div key={availability.day}>
                             {availability.slots.map((slot, idx) => (
-                              <div key={idx}>
+                              <label key={idx} className="flex items-center gap-2 rounded-md border border-gray-200 p-2 hover:bg-gray-50 cursor-pointer">
                                 <input
                                   type="radio"
                                   id={`slot-${idx}`}
@@ -296,10 +314,8 @@ const DoctorsList = () => {
                                     )
                                   }
                                 />
-                                <label htmlFor={`slot-${idx}`} className="ml-2">
-                                  {slot.start} - {slot.end}
-                                </label>
-                              </div>
+                                <span>{slot.start} - {slot.end}</span>
+                              </label>
                             ))}
                           </div>
                         )
@@ -311,7 +327,7 @@ const DoctorsList = () => {
               {appointmentDetails.selectedSlot && (
                 <div className="mt-4">
                   <button
-                    className="bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700"
+                    className="rounded-full bg-indigo-600 px-5 py-2 text-white shadow hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
                     onClick={handleBooking}
                   >
                     Book
@@ -325,5 +341,14 @@ const DoctorsList = () => {
     </div>
   );
 };
+
+function InfoRow({ label, value }) {
+  return (
+    <div className="rounded-md border border-gray-200 p-3">
+      <p className="text-xs uppercase tracking-wide text-gray-500">{label}</p>
+      <p className="mt-1 text-gray-800">{value}</p>
+    </div>
+  );
+}
 
 export default DoctorsList;

@@ -37,28 +37,76 @@ const TransactionHistory = () => {
     fetchPayments();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (loading) {
+    return (
+      <div className="pt-12 p-6 min-h-screen">
+        <div className="max-w-7xl mx-auto">
+          <div className="h-6 w-56 rounded bg-gray-200 animate-pulse" />
+          <div className="mt-6 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+            <ul className="divide-y divide-gray-200">
+              {[...Array(6)].map((_, i) => (
+                <li key={i} className="p-5">
+                  <div className="flex items-start justify-between">
+                    <div className="space-y-1">
+                      <div className="h-4 w-40 rounded bg-gray-200 animate-pulse" />
+                      <div className="h-3 w-24 rounded bg-gray-200 animate-pulse" />
+                      <div className="h-3 w-28 rounded bg-gray-200 animate-pulse" />
+                    </div>
+                    <div className="h-6 w-20 rounded-full bg-gray-200 animate-pulse" />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="pt-12 p-6 min-h-screen">
+        <div className="max-w-2xl mx-auto rounded-2xl border border-red-200 bg-red-50 p-6 text-red-700">
+          <p className="font-semibold">Error</p>
+          <p className="mt-1">{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="max-w-4xl mx-auto p-4 min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">Transaction History</h1>
-      {payments.length === 0 ? (
-        <p>No transactions found.</p>
-      ) : (
-        <ul className="divide-y divide-gray-200">
-          {payments.map((payment) => (
-            <li key={payment._id} className="py-4 shadow-sm">
-              <div className="flex justify-between">
-                <span className="font-medium">Dr. {payment.doctorName}</span>
-                <span>₹{payment.paymentAmount.toFixed(2)}</span>
-              </div>
-              <p className="text-sm text-gray-500">{new Date(payment.createdAt).toLocaleDateString()}</p>
-              <p className="text-sm text-gray-500">{payment.discountApplied ? 'Discount Applied of 10%' : 'No Discount'}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="pt-12 p-6 min-h-screen">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center">Transaction History</h1>
+        {payments.length === 0 ? (
+          <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-10 text-center text-gray-600">
+            No transactions found.
+          </div>
+        ) : (
+          <div className="mt-6 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+            <ul className="divide-y divide-gray-200">
+              {payments.map((payment) => (
+                <li key={payment._id} className="p-5 hover:bg-gray-50 transition">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div>
+                      <p className="text-sm text-gray-600">Doctor</p>
+                      <p className="text-lg font-semibold text-gray-900">Dr. {payment.doctorName}</p>
+                      <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-600">
+                        <span>{new Date(payment.createdAt).toLocaleDateString()}</span>
+                        <span className="hidden sm:inline">•</span>
+                        <span>{payment.discountApplied ? '10% Discount Applied' : 'No Discount'}</span>
+                      </div>
+                    </div>
+                    <span className="self-start sm:self-auto rounded-full bg-indigo-50 px-3 py-1 text-sm font-semibold text-indigo-700 ring-1 ring-indigo-100">
+                      ₹{payment.paymentAmount.toFixed(2)}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

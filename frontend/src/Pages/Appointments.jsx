@@ -116,95 +116,128 @@ export default function Appointments() {
 
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="pt-12 p-6 min-h-screen">
+        <div className="max-w-7xl mx-auto">
+          <div className="h-6 w-40 rounded bg-gray-200 animate-pulse" />
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+                <div className="h-4 w-1/2 rounded bg-gray-200 animate-pulse" />
+                <div className="mt-3 h-3 w-2/3 rounded bg-gray-200 animate-pulse" />
+                <div className="mt-3 h-16 w-full rounded bg-gray-100 animate-pulse" />
+                <div className="mt-4 flex items-center justify-between">
+                  <div className="h-8 w-24 rounded-full bg-gray-200 animate-pulse" />
+                  <div className="h-8 w-24 rounded-full bg-gray-200 animate-pulse" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="pt-24 p-6 min-h-screen">
+        <div className="max-w-2xl mx-auto rounded-2xl border border-red-200 bg-red-50 p-6 text-red-700">
+          <p className="font-semibold">Error</p>
+          <p className="mt-1">{error}</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="p-4 min-h-screen">
-      <h1 className="text-xl font-bold">Appointments</h1>
-      {appointments.length > 0 ? (
-        <ul className="mt-4">
-          {appointments.map((appointment) => (
-            <li
-              key={appointment._id}
-              className="relative p-6 border rounded-lg mb-4 shadow-sm"
-            >
-              {/* Status Badge */}
-              <span
-                className={`absolute top-8 right-10 px-6 py-1 text-sm font-semibold rounded-full ${
-                  appointment.status === "Pending"
-                    ? "bg-yellow-500 text-black"
-                    : appointment.status === "Cancelled"
-                    ? "bg-red-500 text-white"
-                    : "bg-green-500 text-white"
-                }`}
+    <div className="pt-12 p-6 min-h-screen">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center">Appointments</h1>
+        {appointments.length > 0 ? (
+          <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {appointments.map((appointment) => (
+              <li
+                key={appointment._id}
+                className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
-                {appointment.status}
-              </span>
-
-              <p>
-                <strong>Patient Name:</strong> {appointment.patientName}
-              </p>
-              <p>
-                <strong>Doctor Name:</strong> {appointment.doctorName}
-              </p>
-              <p>
-                <strong>Date of Booking:</strong>{" "}
-                {new Date(appointment.dateOfBooking).toLocaleDateString()}
-              </p>
-              <p>
-                <strong>Date:</strong>{" "}
-                {new Date(appointment.dateOfAppointment).toLocaleDateString()}
-              </p>
-              <p>
-                <strong>Time Slot:</strong> {appointment.slot}
-              </p>
-              <p>
-                <strong>Paid Amount:</strong> ₹{appointment.paidAmount}
-              </p>
-
-              {userRole === "Doctor" && appointment.status === "Pending" && (
-                <div className="flex gap-4 mt-4">
-                  <button
-                    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-                    onClick={() => updateStatus(appointment._id, "Approved")}
-                  >
-                    Approve
-                  </button>
-                  <button
-                    className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
-                    onClick={() => updateStatus(appointment._id, "Cancelled")}
-                  >
-                    Cancel
-                  </button>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">Dr. {appointment.doctorName}</h3>
+                    <p className="mt-0.5 text-sm text-gray-600">Patient: {appointment.patientName}</p>
+                  </div>
+                  <StatusPill status={appointment.status} />
                 </div>
-              )}
 
-              {/* ...other appointment details */}
-              {userRole === "Patient" && appointment.status === "Approved" && (
-                <button
-                  className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 mt-4"
-                  onClick={() =>
-                    handlePayment(
-                      appointment._id,
-                      appointment.paidAmount,
-                      appointment.doctorName
-                    )
-                  }
-                >
-                  Pay ₹{appointment.paidAmount}
-                </button>
-              )}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No appointments found.</p>
-      )}
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <Row label="Booked" value={new Date(appointment.dateOfBooking).toLocaleDateString()} />
+                  <Row label="Date" value={new Date(appointment.dateOfAppointment).toLocaleDateString()} />
+                  <Row label="Time" value={appointment.slot} />
+                  <Row label="Amount" value={`₹${appointment.paidAmount}`} />
+                </div>
+
+                {userRole === "Doctor" && appointment.status === "Pending" && (
+                  <div className="mt-5 flex gap-3">
+                    <button
+                      className="flex-1 rounded-full bg-emerald-600 px-4 py-2 text-white font-medium shadow hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                      onClick={() => updateStatus(appointment._id, "Approved")}
+                    >
+                      Approve
+                    </button>
+                    <button
+                      className="flex-1 rounded-full bg-rose-600 px-4 py-2 text-white font-medium shadow hover:bg-rose-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+                      onClick={() => updateStatus(appointment._id, "Cancelled")}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                )}
+
+                {userRole === "Patient" && appointment.status === "Approved" && (
+                  <button
+                    className="mt-5 w-full rounded-full bg-indigo-600 px-4 py-2 text-white font-medium shadow hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                    onClick={() =>
+                      handlePayment(
+                        appointment._id,
+                        appointment.paidAmount,
+                        appointment.doctorName
+                      )
+                    }
+                  >
+                    Pay ₹{appointment.paidAmount}
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-10 text-center text-gray-600">
+            No appointments found.
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function StatusPill({ status }) {
+  const styles =
+    status === "Pending"
+      ? "bg-amber-100 text-amber-800 ring-amber-200"
+      : status === "Cancelled"
+      ? "bg-rose-100 text-rose-800 ring-rose-200"
+      : "bg-emerald-100 text-emerald-800 ring-emerald-200";
+  return (
+    <span className={`rounded-full px-3 py-1 text-xs font-semibold ring-1 ${styles}`}>
+      {status}
+    </span>
+  );
+}
+
+function Row({ label, value }) {
+  return (
+    <div className="flex items-center justify-between rounded-md border border-gray-100 px-3 py-2">
+      <span className="text-sm text-gray-500">{label}</span>
+      <span className="text-sm font-medium text-gray-900">{value}</span>
     </div>
   );
 }

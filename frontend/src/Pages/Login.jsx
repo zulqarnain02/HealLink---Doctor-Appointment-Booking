@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "../api/axios";
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -29,21 +30,21 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen w-full bg-gradient-to-b from-blue-100 to-gray-100 relative flex justify-center items-center overflow-hidden">
-
-      {/* Login Box */}
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96 relative z-10 text-left">
-        <h2 className="text-3xl font-bold text-blue-500 mb-4">Login</h2>
+    <div className="min-h-screen w-full bg-white pt-12 flex justify-center items-start sm:items-center p-6">
+      <div className="w-full max-w-md relative z-10">
+        <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+          <h2 className="text-2xl font-semibold text-gray-900">Sign in to HealLink</h2>
+          <p className="mt-1 text-sm text-gray-600">Welcome back. Please enter your details.</p>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-sm font-medium text-gray-700 mb-1"
               htmlFor="email"
             >
               Email ID
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
               id="email"
               type="email"
               value={email}
@@ -53,13 +54,13 @@ const Login = () => {
           </div>
           <div>
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-sm font-medium text-gray-700 mb-1"
               htmlFor="password"
             >
               Password
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
               id="password"
               type="password"
               value={password}
@@ -67,20 +68,21 @@ const Login = () => {
               placeholder="Enter your password"
             />
           </div>
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {error && <p className="text-rose-600 text-sm">{error}</p>}
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="w-full rounded-full bg-indigo-600 px-4 py-2 text-white font-medium shadow hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
             type="submit"
           >
-            Login
+            Sign in
           </button>
         </form>
-        <p className="text-gray-700 text-sm mt-4">
+        <p className="text-gray-600 text-sm mt-4">
           Don't have an account?{" "}
-          <a className="text-blue-500 hover:text-blue-700" href="/register">
+          <Link className="text-indigo-600 hover:text-indigo-700" to="/register">
             Register here
-          </a>
+          </Link>
         </p>
+        </div>
       </div>
     </div>
   );

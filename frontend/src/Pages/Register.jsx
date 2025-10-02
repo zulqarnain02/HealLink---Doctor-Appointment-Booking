@@ -83,13 +83,12 @@ const Register = () => {
   };
 
   return (
-    <div className="h-screen w-full bg-gradient-to-b from-blue-100 to-gray-100 relative flex justify-center items-center overflow-hidden">
-
-
-      {/* Register Box */}
-      <div className="bg-white p-12 rounded-lg shadow-lg w-full z-10 text-left max-w-screen-sm min-h-[400px] max-h-[80vh] overflow-y-auto">
-        <h2 className="text-2xl font-bold text-blue-500 mb-4">Register</h2>
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
+    <div className="min-h-screen w-full bg-white pt-12 flex justify-center items-start p-6">
+      <div className="w-full max-w-2xl z-10">
+        <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+          <h2 className="text-2xl font-semibold text-gray-900">Create your account</h2>
+          <p className="mt-1 text-sm text-gray-600">Join HealLink to book and manage appointments.</p>
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 mt-4">
           <div className="flex flex-col">
             <label className="block text-gray-700 mb-2" htmlFor="fullName">
               Full Name
@@ -100,7 +99,7 @@ const Register = () => {
               type="text"
               value={formData.fullName}
               onChange={handleChange}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
               placeholder="Enter your full name"
             />
           </div>
@@ -115,7 +114,7 @@ const Register = () => {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
               placeholder="Enter your email"
             />
           </div>
@@ -130,7 +129,7 @@ const Register = () => {
               type="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
               placeholder="Enter your password"
             />
           </div>
@@ -145,7 +144,7 @@ const Register = () => {
               type="tel"
               value={formData.phoneNumber}
               onChange={handleChange}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
               placeholder="Enter your phone number"
             />
           </div>
@@ -159,7 +158,7 @@ const Register = () => {
               name="gender"
               value={formData.gender}
               onChange={handleChange}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
             >
               <option value="">Select Gender</option>
               <option value="Male">Male</option>
@@ -178,7 +177,7 @@ const Register = () => {
               type="date"
               value={formData.dateOfBirth}
               onChange={handleChange}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
             />
           </div>
 
@@ -193,7 +192,7 @@ const Register = () => {
               type="text"
               value={formData.address}
               onChange={handleChange}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
               placeholder="Enter your address"
             />
           </div>
@@ -207,7 +206,7 @@ const Register = () => {
               name="role"
               value={formData.role}
               onChange={handleChange}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
             >
               <option value="Patient">Patient</option>
               <option value="Doctor">Doctor</option>
@@ -229,7 +228,7 @@ const Register = () => {
                   type="text"
                   value={formData.medicalLicense}
                   onChange={handleChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                   placeholder="Enter your medical license number"
                 />
               </div>
@@ -247,7 +246,7 @@ const Register = () => {
                   type="text"
                   value={formData.specialization}
                   onChange={handleChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                   placeholder="Enter your specialization"
                 />
               </div>
@@ -265,7 +264,7 @@ const Register = () => {
                   type="number"
                   value={formData.yearsOfExperience}
                   onChange={handleChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                   placeholder="Enter years of experience"
                 />
               </div>
@@ -283,7 +282,7 @@ const Register = () => {
                   type="text"
                   value={formData.clinicName}
                   onChange={handleChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                   placeholder="Enter clinic name"
                 />
               </div>
@@ -302,7 +301,7 @@ const Register = () => {
                   type="text"
                   value={formData.clinicAddress}
                   onChange={handleChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                   placeholder="Enter clinic address"
                 />
               </div>
@@ -320,7 +319,7 @@ const Register = () => {
                   type="number"
                   value={formData.consultationFee}
                   onChange={handleChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                   placeholder="Enter consultation fee"
                 />
               </div>
@@ -331,11 +330,12 @@ const Register = () => {
 
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded font-bold hover:bg-blue-700 focus:outline-none focus:outline-none focus:shadow-outline"
+            className="rounded-full bg-indigo-600 px-5 py-2 text-white font-medium shadow hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
           >
             Register
           </button>
         </form>
+        </div>
       </div>
     </div>
   );

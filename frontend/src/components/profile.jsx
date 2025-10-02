@@ -100,11 +100,11 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
   return (
     <div
       id="modal-background"
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 md:p-0"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-0 bg-slate-900/60 backdrop-blur"
       onClick={handleClickOutside}
     >
-      <div className="bg-white p-6 rounded-md shadow-lg w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl overflow-auto max-h-[80vh] bg-opacity-70">
-        <h2 className="text-3xl font-semibold mb-4">Edit Profile📝</h2>
+      <div className="w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl max-h-[80vh] overflow-auto rounded-2xl bg-white p-6 shadow-xl ring-1 ring-black/5">
+        <h2 className="text-2xl font-semibold mb-4">Edit Profile</h2>
         <div className="grid grid-cols-1 gap-4">
           <div>
             <label
@@ -119,7 +119,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
               name="fullName"
               value={formData.fullName || ""}
               onChange={handleChange}
-              className="w-full border rounded px-4 py-2"
+              className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
             />
           </div>
           <div>
@@ -135,7 +135,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
               name="phoneNumber"
               value={formData.phoneNumber || ""}
               onChange={handleChange}
-              className="w-full border rounded px-4 py-2"
+              className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
             />
           </div>
           <div>
@@ -153,7 +153,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
                 formData.dateOfBirth ? formData.dateOfBirth.split("T")[0] : ""
               }
               onChange={handleChange}
-              className="w-full border rounded px-4 py-2"
+              className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
             />
           </div>
           <div>
@@ -169,7 +169,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
               name="address"
               value={formData.address || ""}
               onChange={handleChange}
-              className="w-full border rounded px-4 py-2"
+              className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
             />
           </div>
 
@@ -188,7 +188,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
                   name="specialization"
                   value={formData.specialization || ""}
                   onChange={handleChange}
-                  className="w-full border rounded px-4 py-2"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                 />
               </div>
               <div>
@@ -204,7 +204,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
                   name="yearsOfExperience"
                   value={formData.yearsOfExperience || ""}
                   onChange={handleChange}
-                  className="w-full border rounded px-4 py-2"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                 />
               </div>
               <div>
@@ -220,7 +220,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
                   name="clinicName"
                   value={formData.clinicName || ""}
                   onChange={handleChange}
-                  className="w-full border rounded px-4 py-2"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                 />
               </div>
               <div>
@@ -236,7 +236,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
                   name="clinicAddress"
                   value={formData.clinicAddress || ""}
                   onChange={handleChange}
-                  className="w-full border rounded px-4 py-2"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                 />
               </div>
               <div>
@@ -252,7 +252,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
                   name="consultationFee"
                   value={formData.consultationFee || ""}
                   onChange={handleChange}
-                  className="w-full border rounded px-4 py-2"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                 />
               </div>
               <div>
@@ -273,7 +273,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
                               e.target.value
                             )
                           }
-                          className="border rounded px-2 py-1"
+                          className="rounded-md border border-gray-300 px-2 py-1 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                         />
                         <input
                           type="time"
@@ -286,11 +286,11 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
                               e.target.value
                             )
                           }
-                          className="border rounded px-2 py-1"
+                          className="rounded-md border border-gray-300 px-2 py-1 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                         />
                         <button
                           onClick={() => handleRemoveSlot(day, index)}
-                          className="text-red-500 hover:underline"
+                          className="text-rose-600 hover:underline"
                         >
                           Remove
                         </button>
@@ -298,7 +298,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
                     ))}
                     <button
                       onClick={() => handleAddSlot(day)}
-                      className="mt-2 text-blue-500 hover:underline"
+                      className="mt-2 text-indigo-600 hover:underline"
                     >
                       &nbsp;Add Slot
                     </button>
@@ -317,7 +317,7 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
                   name="description"
                   value={formData.description || ""}
                   onChange={handleChange}
-                  className="w-full border rounded px-4 py-2 h-20"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 h-20 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                 ></textarea>
               </div>
             </>
@@ -326,14 +326,16 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
 
         <div className="flex justify-end mt-4">
           <button
-            className="px-4 py-2 bg-gray-300 rounded mr-2"
+            className="rounded-full border border-gray-300 px-4 py-2 mr-2 hover:bg-gray-50"
             onClick={onClose}
+            type="button"
           >
             Cancel
           </button>
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded"
+            className="rounded-full bg-indigo-600 px-5 py-2 text-white shadow hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
             onClick={handleSubmit}
+            type="button"
           >
             Save
           </button>
@@ -344,8 +346,8 @@ const EditProfileModal = ({ userData, isOpen, onClose, onSave }) => {
 };
 
 const DoctorDescription = ({ userData }) => (
-  <div className="bg-white p-6 shadow-lg rounded-md mt-6">
-    <h2 className="text-xl font-semibold text-gray-800">
+  <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+    <h2 className="text-xl font-semibold text-gray-900">
       About Dr. {userData.fullName}
     </h2>
     <p className="text-gray-600 mt-2">{userData.description}</p>
@@ -353,8 +355,8 @@ const DoctorDescription = ({ userData }) => (
 );
 
 const PatentCreditBalance = ({ userData }) => (
-  <div className="bg-white p-6 shadow-lg rounded-md mt-6">
-    <h2 className="text-xl font-semibold text-gray-800 text-center">
+  <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+    <h2 className="text-xl font-semibold text-gray-900 text-center">
       Wallet Balance: ₹{userData.credit}
     </h2>
     <p className="text-gray-600 mt-2">{userData.description}</p>
@@ -405,72 +407,81 @@ const Profile = () => {
     return <div className="text-center text-red-600 mt-20">Error: {error}</div>;
 
   return (
-    <div className="container mx-auto p-6 min-h-screen bg-gray-100">
+    <div className="max-w-7xl mx-auto pt-12 p-6 min-h-screen bg-white">
       {/* Header Section */}
-      <div className="relative bg-gradient-to-r from-blue-400 to-purple-400 text-white p-10 rounded-lg shadow-lg">
-        <div
-          className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md cursor-pointer"
-          onClick={() => setIsModalOpen(true)}
-        >
-          <Edit className="text-gray-600" />
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="w-24 h-24 bg-white rounded-full overflow-hidden shadow-lg border-4 border-blue-300">
-            <img
-              src="https://via.placeholder.com/150"
-              alt="Profile"
-              className="w-full h-full object-cover"
-            />
+      <div className="relative rounded-2xl border border-indigo-100 bg-gradient-to-r from-indigo-50 to-violet-50 text-gray-900 shadow-sm">
+        <div className="p-8">
+          <div className="absolute top-4 right-4">
+            <button
+              className="inline-flex items-center justify-center rounded-full bg-indigo-600 text-white p-2 ring-1 ring-indigo-500/30 hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+              onClick={() => setIsModalOpen(true)}
+              aria-label="Edit profile"
+              type="button"
+            >
+              <Edit className="h-5 w-5" />
+            </button>
           </div>
-          <h1 className="text-3xl font-semibold mt-4">
-            {userData.role === "Doctor"
-              ? `Dr. ${userData.fullName}`
-              : userData.fullName}
-          </h1>
-          <p className="text-lg font-light">
-            {userData.specialization || "Patient"}
-          </p>
+
+          <div className="flex flex-col items-center">
+            <div className="w-24 h-24 rounded-full overflow-hidden shadow ring-2 ring-indigo-200">
+              <img
+                src="https://via.placeholder.com/150"
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h1 className="mt-4 text-3xl font-semibold">
+              {userData.role === "Doctor" ? `Dr. ${userData.fullName}` : userData.fullName}
+            </h1>
+            <p className="text-gray-600">
+              {userData.specialization || "Patient"}
+            </p>
+          </div>
         </div>
 
         {/* Description Section */}
         {userData.role === "Doctor" && (
-          <DoctorDescription userData={userData} />
+          <div className="px-8 pb-8">
+            <DoctorDescription userData={userData} />
+          </div>
         )}
 
         {/* Description Section */}
         {userData.role === "Patient" && (
-          <PatentCreditBalance userData={userData} />
+          <div className="px-8 pb-8">
+            <PatentCreditBalance userData={userData} />
+          </div>
         )}
       </div>
 
       {/* Profile Details */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        <div className="bg-white p-6 shadow-md rounded-lg">
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p className="flex items-center">
             <User className="mr-2 text-blue-500" />
             <strong>Full Name:&nbsp;</strong> {userData.fullName}
           </p>
         </div>
-        <div className="bg-white p-6 shadow-md rounded-lg">
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p className="flex items-center">
             <Mail className="mr-2 text-green-500" />
             <strong>Email: &nbsp;</strong> {userData.email}
           </p>
         </div>
-        <div className="bg-white p-6 shadow-md rounded-lg">
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p className="flex items-center">
             <Phone className="mr-2 text-purple-500" />
             <strong>Phone Number: &nbsp;</strong> {userData.phoneNumber}
           </p>
         </div>
-        <div className="bg-white p-6 shadow-md rounded-lg">
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p className="flex items-center">
             <Calendar className="mr-2 text-red-500" />
             <strong>Date of Birth: &nbsp;</strong>{" "}
             {new Date(userData.dateOfBirth).toLocaleDateString()}
           </p>
         </div>
-        <div className="bg-white p-6 shadow-md rounded-lg">
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p className="flex items-center">
             <MapPin className="mr-2 text-yellow-500" />
             <strong>Address:&nbsp;</strong> {userData.address}
@@ -480,36 +491,36 @@ const Profile = () => {
         {/* Doctor-Specific Details */}
         {userData.role === "Doctor" && (
           <>
-            <div className="bg-white p-6 shadow-md rounded-lg">
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <p className="flex items-center">
                 <Briefcase className="mr-2 text-indigo-500" />
                 <strong>Specialization: &nbsp;</strong>{" "}
                 {userData.specialization}
               </p>
             </div>
-            <div className="bg-white p-6 shadow-md rounded-lg">
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <p className="flex items-center">
                 <strong>Years of Experience: &nbsp;</strong>{" "}
                 {userData.yearsOfExperience}
               </p>
             </div>
-            <div className="bg-white p-6 shadow-md rounded-lg">
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <p className="flex items-center">
                 <strong>Clinic Name: &nbsp;</strong> {userData.clinicName}
               </p>
             </div>
-            <div className="bg-white p-6 shadow-md rounded-lg">
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <p className="flex items-center">
                 <strong>Clinic Address: &nbsp;</strong> {userData.clinicAddress}
               </p>
             </div>
-            <div className="bg-white p-6 shadow-md rounded-lg">
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <p className="flex items-center">
                 <strong>Consultation Fee: &nbsp;</strong> ₹
                 {userData.consultationFee}
               </p>
             </div>
-            <div className="bg-white p-6 shadow-md rounded-lg">
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <DoctorAvailability availability={userData.availability || {}} />
             </div>
           </>
