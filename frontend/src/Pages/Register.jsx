@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { apiurl } from "../api/axios";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +58,7 @@ const Register = () => {
     console.log("Registration successful:", formData);
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(`${apiurl}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
