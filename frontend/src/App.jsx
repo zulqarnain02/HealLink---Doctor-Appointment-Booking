@@ -23,10 +23,10 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route index element={<Navigate to="home" replace />} />
-          <Route path="home" element={<Home />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="doctors" element={<DoctorsList />} />
+          <Route index element={<Navigate to="/home" replace />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/doctors" element={<DoctorsList />} />
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/user-payments" element={<TransactionHistory />} />
         </Route>
