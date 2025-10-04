@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Home from './Pages/Home';
@@ -22,6 +23,7 @@ function App() {
             </ProtectedRoute>
           }
         >
+          <Route index element={<Navigate to="home" replace />} />
           <Route path="home" element={<Home />} />
           <Route path="profile" element={<Profile />} />
           <Route path="doctors" element={<DoctorsList />} />
