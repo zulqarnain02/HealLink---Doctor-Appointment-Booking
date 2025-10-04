@@ -26,6 +26,10 @@ app.use('/api', doctorRoutes);
 app.use('/api', appointmentRoutes);
 app.use('/api', paymentRoutes); // Add payment routes
 
+app.get('/', (req, res) => {
+  res.send("Hello World");
+});
+
 // Database Connection
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
